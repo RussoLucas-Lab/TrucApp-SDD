@@ -1,0 +1,200 @@
+/* ============================================================
+ * Game Status - Stage Indicators and Winner Display
+ * =========================================================== */
+
+.game-status {
+	max-width: 640px;
+	width: 100%;
+	margin: var(--space-lg) auto 0;
+	padding: 0 var(--space-lg);
+	box-sizing: border-box;
+	display: grid;
+	gap: var(--space-md);
+	
+	/* Prevent overflow */
+	overflow-x: hidden;
+}
+
+/* ============================================================
+ * Stages Container - Malas/Buenas Indicators
+ * =========================================================== */
+
+.game-status__stages {
+	display: grid;
+	gap: var(--space-sm);
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	width: 100%;
+}
+
+.game-status__stage {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-md);
+	min-height: var(--touch-target-min);
+	padding: var(--space-sm) var(--space-md);
+	border-radius: var(--radius-md);
+	
+	background: var(--color-status-bg);
+	border: 1px solid var(--color-status-border);
+	
+	transition: all var(--transition-normal);
+	
+	/* Prevent text selection */
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+/* ============================================================
+ * Stage Team Label
+ * =========================================================== */
+
+.game-status__team {
+	font-weight: var(--font-weight-bold);
+	color: var(--color-text-light);
+	font-size: 0.95rem;
+	letter-spacing: 0.01em;
+}
+
+/* ============================================================
+ * Badge - Malas/Buenas Indicator
+ * Visual feedback is KEY to understanding game state
+ * =========================================================== */
+
+.game-status__badge {
+	min-width: 70px;
+	padding: 0.4rem 0.8rem;
+	border-radius: var(--radius-full);
+	text-align: center;
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-heavy);
+	letter-spacing: 0.02em;
+	
+	/* Smooth color transitions */
+	transition: 
+		background var(--transition-normal),
+		color var(--transition-normal),
+		transform var(--transition-normal);
+	
+	display: inline-block;
+	white-space: nowrap;
+}
+
+/* Malas Badge - Light/neutral */
+.game-status__badge--malas {
+	background: var(--color-etapa-malas);
+	color: var(--color-etapa-text);
+	border: 1px solid rgba(28, 28, 28, 0.1);
+}
+
+/* Buenas Badge - Gold/distinctive */
+.game-status__badge--buenas {
+	background: var(--color-etapa-buenas);
+	color: var(--color-etapa-text);
+	border: 2px solid rgba(217, 180, 95, 0.3);
+	font-weight: var(--font-weight-heavy);
+	
+	/* Subtle emphasis */
+	box-shadow: 0 2px 8px rgba(217, 180, 95, 0.2);
+}
+
+/* ============================================================
+ * Winner Announcement - Prominent & Unmissable
+ * =========================================================== */
+
+.game-status__winner {
+	margin: 0;
+	padding: var(--space-md) var(--space-lg);
+	border-radius: var(--radius-md);
+	background: var(--color-winner-bg);
+	color: #fff;
+	text-align: center;
+	font-weight: var(--font-weight-heavy);
+	font-size: 1.05rem;
+	letter-spacing: 0.015em;
+	
+	/* Make it POP */
+	animation: slideInAndGrow 0.4s ease-out;
+	box-shadow: 0 8px 20px rgba(192, 57, 43, 0.3);
+	
+	/* Ensure it's on top */
+	position: relative;
+	z-index: 10;
+}
+
+/* Animation for winner announcement */
+@keyframes slideInAndGrow {
+	from {
+		opacity: 0;
+		transform: scale(0.95) translateY(-8px);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1) translateY(0);
+	}
+}
+
+/* ============================================================
+ * Responsive Adjustments
+ * =========================================================== */
+
+/* Small phones (< 375px) */
+@media (max-width: 374px) {
+	.game-status {
+		gap: var(--space-sm);
+	}
+
+	.game-status__stage {
+		min-height: 44px;
+		padding: 8px 10px;
+		border-radius: var(--radius-sm);
+	}
+
+	.game-status__team {
+		font-size: 0.9rem;
+	}
+
+	.game-status__badge {
+		min-width: 60px;
+		padding: 0.3rem 0.6rem;
+		font-size: 0.85rem;
+	}
+
+	.game-status__winner {
+		padding: 10px 12px;
+		font-size: 0.95rem;
+	}
+}
+
+/* Single column on extra small screens */
+@media (max-width: 374px) {
+	.game-status__stages {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Single column on small portrait phones */
+@media (max-width: 520px) and (orientation: portrait) {
+	.game-status__stages {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Landscape - Optimize for height */
+@media (orientation: landscape) and (max-height: 500px) {
+	.game-status {
+		gap: var(--space-sm);
+		margin-top: var(--space-sm);
+	}
+
+	.game-status__stage {
+		min-height: 40px;
+		padding: 6px 10px;
+	}
+
+	.game-status__badge {
+		min-width: 55px;
+		padding: 0.25rem 0.5rem;
+		font-size: 0.8rem;
+	}
+}

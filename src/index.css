@@ -1,0 +1,147 @@
+/* ============================================================
+ * TRUCO COUNTER — Global Styles & Design System
+ * Mobile-first, responsive, accessible design
+ * =========================================================== */
+
+:root {
+  /* Color Palette */
+  --color-primary-blue: #2979ff;
+  --color-primary-blue-light: #90caf9;
+  --color-danger-red: #e53935;
+  --color-danger-red-light: #ffcdd2;
+  --color-winner: #c0392b;
+  --color-winner-bg: rgba(192, 57, 43, 0.95);
+
+  /* Team & Score Colors */
+  --color-bg-dark: #1a472a;
+  --color-bg-dark-light: #12331e;
+  --color-text-light: #f5f0e8;
+  --color-text-light-muted: rgba(245, 240, 232, 0.72);
+  
+  /* Score Card Colors */
+  --color-card-bg: rgba(245, 240, 232, 0.96);
+  --color-card-text: #1c1c1c;
+  
+  /* Malas/Buenas Badges */
+  --color-etapa-malas: rgba(245, 240, 232, 0.88);
+  --color-etapa-buenas: #d9b45f;
+  --color-etapa-text: #1c1c1c;
+
+  /* Game Status */
+  --color-status-bg: rgba(245, 240, 232, 0.14);
+  --color-status-border: rgba(245, 240, 232, 0.22);
+
+  /* Spacing Scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.18);
+
+  /* Touch Target (Accessibility) */
+  --touch-target-min: 48px;
+
+  /* Typography */
+  --font-size-base: 1rem;
+  --font-size-sm: 0.92rem;
+  --font-size-xs: 0.78rem;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 900;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  /* Transitions */
+  --transition-fast: 0.1s;
+  --transition-normal: 0.2s;
+}
+
+/* ============================================================
+ * Base Styles
+ * =========================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  /* Prevent zoom on iOS */
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(
+    180deg,
+    var(--color-bg-dark) 0%,
+    var(--color-bg-dark-light) 100%
+  );
+  color: var(--color-text-light);
+}
+
+/* ============================================================
+ * Buttons - Global Button Defaults
+ * =========================================================== */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  /* Prevent default button styles */
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+button:active {
+  /* Subtle haptic feedback feel */
+  transform: translateY(1px);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* ============================================================
+ * Typography
+ * =========================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+}
+
+/* ============================================================
+ * Mobile-First Breakpoints Reference
+ * =========================================================== */
+
+/* 
+  xs: 320px – 374px  (small phones)
+  sm: 375px – 520px  (iPhone SE, regular phones)
+  md: 521px – 760px  (large phones, small tablets)
+  lg: 761px – 1200px (tablets, desktops)
+  xl: 1201px+        (large desktops)
+*/

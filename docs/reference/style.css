@@ -1,0 +1,185 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: SteelBlue;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+}
+
+.container-player-1,
+.container-player-2{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 810px;
+    width: 150px;
+    border: 1px solid black;
+}
+
+.container-points{
+    height: 800px;
+    width: 150px;
+    border: 1px solid black;
+    background-color:Gainsboro;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn{
+    height: 30px;
+    width: inherit;
+}
+
+.box-1,
+.box-2,
+.box-3,
+.box-4,
+.box-5,
+.box-6 {
+    height: 100px;
+    width: 100px;
+    position: relative;
+    
+}
+
+.point-1{
+    height: 8px;
+    width: 80px;
+    position: absolute;
+    left: 10px;
+    transform: scale(0);
+    transition: transform 0.2s;
+}
+.point-2{
+    height: 80px;
+    width: 8px;
+    position: absolute;
+    left: 91px;
+    top: 10px;
+    transform: scale(0);
+    transition: transform 0.2s;
+}
+.point-3{
+    height: 80px;
+    width: 8px;
+    position: absolute;
+    top: 10px;
+    transform: scale(0);
+    transition: transform 0.2s;
+}
+.point-4{
+    height: 8px;
+    width: 80px;
+    position: absolute;
+    left: 10px;
+    top: 91px; 
+    transform: scale(0);
+    transition: transform 0.2s;   
+}
+.point-5{
+    height: 8px;
+    width: 100px;
+    position: absolute;
+    top: 46px;
+    transform: rotate(135deg) scale(0);
+    transition: transform 0.2s;
+}
+
+.point-1.active,
+.point-2.active,
+.point-3.active,
+.point-4.active{
+    transform: scale(1);
+}
+.point-5.active{
+    transform: rotate(135deg) scale(1);
+}
+
+.desing{
+    border-radius: 5px;
+    background-color: Sienna;
+}
+
+.point-1.unactive,
+.point-2.unactive,
+.point-3.unactive,
+.point-4.unactive{
+    transform: scale(0);
+}.point-5.unactive{
+    transform: rotate(135deg) scale(0);
+}
+/*CARD ANIMATION AN STYLE */
+.popup-card{
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+.card {
+    position: relative;
+    width: 248px;
+    height: 400px;
+    perspective: 1000px;
+    transform: scale(0); 
+    transition: transform 0.75s ease-out; 
+}
+.card.show{
+    transform: scale(1);
+}
+.card div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    transition: all 1.75s ease-in-out;
+}
+.back {
+    background: url('reverse_card.png');
+    background-size: 130%;
+    transform: rotateY(0deg); 
+}
+.front {
+    background: url('anverso_carta_truco.png');
+    background-size: contain;
+    transform: rotateY(180deg); 
+}
+.card.flip .back {
+    transform: rotateY(180deg) scale(1) ;
+}
+.card.flip .front {
+    transform: rotateY(360deg) scale(1) ;
+}
+
+.popup-card.close,
+.card.close{
+    visibility: hidden;
+}
+
+#close-popup{
+    position: fixed;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%) ;
+    border: 0;
+    height: 30px;
+    width: 100px;
+}
+#close-popup:hover{
+    cursor: pointer;
+    transform: translateX(-50%) scale(0.9);
+}

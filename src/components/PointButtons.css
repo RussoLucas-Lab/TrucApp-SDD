@@ -1,0 +1,123 @@
+/* ============================================================
+ * Point Buttons - Score Adjustment Controls
+ * Touch targets: minimum 48x48px (WCAG AAA)
+ * =========================================================== */
+
+.point-buttons {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--space-sm);
+	width: 100%;
+	
+	/* Ensure buttons don't overflow */
+	box-sizing: border-box;
+}
+
+.point-button {
+	/* Touch target minimum: 48x48px */
+	min-width: var(--touch-target-min);
+	min-height: var(--touch-target-min);
+	
+	/* Flex growth for optimal spacing */
+	flex: 1 1 auto;
+	
+	font-size: 1.1rem;
+	font-weight: var(--font-weight-bold);
+	border-radius: var(--radius-sm);
+	border: none;
+	outline: none;
+	cursor: pointer;
+	
+	/* Smooth transitions */
+	transition: 
+		background var(--transition-fast),
+		transform var(--transition-fast),
+		opacity var(--transition-normal);
+	
+	/* Better haptic feel */
+	user-select: none;
+	-webkit-user-select: none;
+	-webkit-touch-callout: none;
+}
+
+/* ============================================================
+ * Button States - Add (Blue)
+ * =========================================================== */
+
+.point-button.add {
+	background: var(--color-primary-blue);
+	color: white;
+	font-weight: var(--font-weight-heavy);
+}
+
+.point-button.add:hover:not(:disabled) {
+	background: #1e63e6;
+	transform: scale(1.05);
+}
+
+.point-button.add:active:not(:disabled) {
+	transform: scale(0.98) translateY(1px);
+}
+
+.point-button.add:disabled {
+	background: var(--color-primary-blue-light);
+	color: rgba(238, 238, 238, 0.7);
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+/* ============================================================
+ * Button States - Subtract (Red)
+ * =========================================================== */
+
+.point-button.remove {
+	background: var(--color-danger-red);
+	color: white;
+	font-weight: var(--font-weight-heavy);
+}
+
+.point-button.remove:hover:not(:disabled) {
+	background: #d32f2f;
+	transform: scale(1.05);
+}
+
+.point-button.remove:active:not(:disabled) {
+	transform: scale(0.98) translateY(1px);
+}
+
+.point-button.remove:disabled {
+	background: var(--color-danger-red-light);
+	color: rgba(238, 238, 238, 0.7);
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+/* ============================================================
+ * Responsive Adjustments for Small Screens
+ * =========================================================== */
+
+/* Extra small phones (< 375px) - Stack buttons */
+@media (max-width: 374px) {
+	.point-buttons {
+		gap: var(--space-xs);
+	}
+
+	.point-button {
+		min-width: 44px;
+		min-height: 44px;
+		font-size: 0.95rem;
+	}
+}
+
+/* Landscape orientation - Reduce gaps */
+@media (orientation: landscape) {
+	.point-buttons {
+		gap: 6px;
+	}
+
+	.point-button {
+		min-height: 40px;
+		font-size: 1rem;
+	}
+}

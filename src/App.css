@@ -1,0 +1,96 @@
+/* ============================================================
+ * App Shell - Main Layout Container
+ * =========================================================== */
+
+.app-shell {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+	
+	/* Gradient background with subtle texture */
+	background:
+		radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 35%),
+		linear-gradient(180deg, var(--color-bg-dark) 0%, var(--color-bg-dark-light) 100%);
+	
+	color: var(--color-text-light);
+	
+	/* Prevent horizontal scroll on mobile landscape */
+	overflow-x: hidden;
+	width: 100%;
+	max-width: 100%;
+}
+
+/* ============================================================
+ * Header
+ * =========================================================== */
+
+.app-header {
+	max-width: 640px;
+	width: 100%;
+	margin: 0 auto var(--space-lg);
+	text-align: center;
+	flex-shrink: 0;
+}
+
+.app-kicker {
+	margin: 0 0 var(--space-sm);
+	font-size: var(--font-size-xs);
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-text-light-muted);
+	font-weight: var(--font-weight-bold);
+}
+
+.app-title {
+	margin: 0;
+	font-size: clamp(1.75rem, 6vw, 3rem);
+	line-height: 1;
+	font-weight: var(--font-weight-heavy);
+}
+
+/* ============================================================
+ * Main Content Area - Flexible Growth
+ * =========================================================== */
+
+.app-shell > section:nth-of-type(1) {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	min-width: 0; /* Allow flex children to shrink */
+}
+
+/* ============================================================
+ * Actions (Reset Button)
+ * =========================================================== */
+
+.actions {
+	display: grid;
+	gap: var(--space-md);
+	max-width: 640px;
+	width: 100%;
+	margin: var(--space-xl) auto 0;
+	padding: 0 var(--space-lg);
+	box-sizing: border-box;
+	flex-shrink: 0;
+}
+
+/* ============================================================
+ * Responsive Adjustments
+ * =========================================================== */
+
+/* Tablets and larger (760px+) */
+@media (min-width: 760px) {
+	.app-shell {
+		padding-inline: var(--space-2xl);
+	}
+}
+
+/* Large desktops - constrain width */
+@media (min-width: 1200px) {
+	.app-shell {
+		margin: 0 auto;
+		max-width: 1200px;
+	}
+}

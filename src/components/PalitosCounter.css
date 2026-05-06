@@ -1,0 +1,228 @@
+/* ============================================================
+ * PalitosCounter - Stick Counter Styling (Reference-based)
+ * Palitos-based traditional Truco Argentina scoring display
+ * Using absolute positioned lines like the reference design
+ * =========================================================== */
+
+:root {
+  /* Palitos Color Variables - Brown Sienna tone */
+  --palito-color-active: #a0522d;
+  --palito-color-ghost: rgba(160, 82, 45, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --palito-color-ghost: rgba(160, 82, 45, 0.15);
+  }
+}
+
+/* ============================================================
+ * Container - Vertical layout (top to bottom)
+ * =========================================================== */
+
+.palitos-counter {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* ============================================================
+ * Individual Box Container (100x100px)
+ * =========================================================== */
+
+.palito-box {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================
+ * Point Lines - Absolute Positioning
+ * =========================================================== */
+
+.point {
+  position: absolute;
+  background-color: var(--palito-color-ghost);
+  border-radius: 5px;
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+/* point-1: Horizontal line TOP (80x8) */
+.point-1 {
+  width: 80px;
+  height: 8px;
+  left: 10px;
+  top: 10px;
+}
+
+/* point-2: Vertical line RIGHT (8x80) */
+.point-2 {
+  width: 8px;
+  height: 80px;
+  right: 10px;
+  top: 10px;
+}
+
+/* point-3: Vertical line LEFT (8x80) */
+.point-3 {
+  width: 8px;
+  height: 80px;
+  left: 10px;
+  top: 10px;
+}
+
+/* point-4: Horizontal line BOTTOM (80x8) */
+.point-4 {
+  width: 80px;
+  height: 8px;
+  left: 10px;
+  bottom: 10px;
+}
+
+/* point-5: Diagonal line (100x8 rotated 135deg) */
+.point-5 {
+  width: 100px;
+  height: 8px;
+  left: 0;
+  top: 46px;
+  transform: rotate(135deg) scale(0);
+  transform-origin: center;
+}
+
+/* ============================================================
+ * Active State - Scale to 1
+ * =========================================================== */
+
+.point.active {
+  background-color: var(--palito-color-active);
+  transform: scale(1);
+}
+
+.point-5.active {
+  transform: rotate(135deg) scale(1);
+}
+
+/* ============================================================
+ * New Animation - Fade in with scale
+ * =========================================================== */
+
+@keyframes point-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes diagonal-appear {
+  from {
+    opacity: 0;
+    transform: rotate(135deg) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(135deg) scale(1);
+  }
+}
+
+.point.new {
+  animation: point-appear 0.2s ease-out forwards;
+}
+
+.point-5.new {
+  animation: diagonal-appear 0.2s ease-out forwards;
+}
+
+/* ============================================================
+ * Responsive: Mobile Scaling (< 400px)
+ * =========================================================== */
+
+/* ============================================================
+ * Responsive: Mobile Scaling (< 400px)
+ * =========================================================== */
+
+@media (max-width: 399px) {
+  .palitos-counter {
+    gap: 8px;
+  }
+
+  .palito-box {
+    width: 70px;
+    height: 70px;
+  }
+
+  .point-1,
+  .point-4 {
+    width: 56px;
+    height: 6px;
+    left: 7px;
+  }
+
+  .point-2,
+  .point-3 {
+    width: 6px;
+    height: 56px;
+    left: 7px;
+  }
+
+  .point-5 {
+    width: 70px;
+    height: 6px;
+    top: 32px;
+  }
+}
+
+/* ============================================================
+ * Responsive: Tablet and up
+ * =========================================================== */
+
+@media (min-width: 521px) {
+  .palitos-counter {
+    gap: 12px;
+    justify-content: flex-start;
+  }
+}
+
+/* ============================================================
+ * Landscape Orientation Optimization
+ * =========================================================== */
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .palitos-counter {
+    gap: 8px;
+  }
+
+  .palito-box {
+    width: 80px;
+    height: 80px;
+  }
+
+  .point-1,
+  .point-4 {
+    width: 64px;
+    height: 6px;
+    left: 8px;
+  }
+
+  .point-2,
+  .point-3 {
+    width: 6px;
+    height: 64px;
+    left: 8px;
+  }
+
+  .point-5 {
+    width: 80px;
+    height: 6px;
+    top: 37px;
+  }
+}

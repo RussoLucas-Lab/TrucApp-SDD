@@ -1,0 +1,114 @@
+/* ============================================================
+ * Team Score - Primary Visual Element
+ * Score is the DOMINANT element - should be immediately visible
+ * =========================================================== */
+
+.team-score {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	
+	padding: 0.75em 0;
+	background: #fff;
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-sm);
+	
+	margin: 0.5em 0;
+	
+	/* Prevent text selection for better UX */
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+/* ============================================================
+ * Team Name - Secondary Label
+ * =========================================================== */
+
+.team-score .team-name {
+	font-size: 1.05rem;
+	color: #666;
+	font-weight: var(--font-weight-bold);
+	margin-bottom: 0.35em;
+	
+	/* Prevent overflow */
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 100%;
+	width: 100%;
+	text-align: center;
+	
+	letter-spacing: 0.015em;
+}
+
+/* ============================================================
+ * Team Score Display - Palitos + Numeric Score
+ * Container for visual (palitos) + numeric representation
+ * =========================================================== */
+
+.team-score .team-score-display {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5em;
+	width: 100%;
+}
+
+/* ============================================================
+ * Score Value - DOMINANT VISUAL
+ * This is the most important number on screen
+ * =========================================================== */
+
+.team-score .team-score-value {
+	font-size: 3.2em;
+	font-weight: var(--font-weight-heavy);
+	color: #000;
+	line-height: 1;
+	letter-spacing: 0.04em;
+	
+	/* Add subtle text shadow for depth */
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+	
+	/* Make it feel more prominent */
+	display: block;
+	margin-top: 0.1em;
+}
+
+/* ============================================================
+ * Responsive Sizing
+ * =========================================================== */
+
+/* Small phones (< 375px) - Reduce padding */
+@media (max-width: 374px) {
+	.team-score {
+		padding: 0.6em 0;
+		border-radius: var(--radius-sm);
+	}
+
+	.team-score .team-score-display {
+		gap: 0.4em;
+	}
+
+	.team-score .team-score-value {
+		font-size: 2.6em;
+		margin-top: 0.05em;
+	}
+}
+
+/* Large phones / tablets (520px+) - Increase prominence */
+@media (min-width: 520px) {
+	.team-score {
+		padding: 1em 0;
+	}
+
+	.team-score .team-score-display {
+		gap: 0.6em;
+	}
+
+	.team-score .team-score-value {
+		font-size: 3.6em;
+		margin-top: 0.15em;
+	}
+}

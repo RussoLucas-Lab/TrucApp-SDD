@@ -1,0 +1,94 @@
+/* ============================================================
+ * ScoreBoard - Main Scoring Layout
+ * Two columns side-by-side for both Desktop and Mobile
+ * =========================================================== */
+
+.scoreboard {
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 16px !important;
+	width: 100% !important;
+	margin: 0 auto !important;
+	padding: 16px !important;
+	box-sizing: border-box !important;
+	overflow-x: hidden !important;
+	justify-items: center !important;
+	align-items: start !important;
+}
+
+.team-panel {
+	padding: var(--space-md);
+	border-radius: var(--radius-lg);
+	background: var(--color-card-bg);
+	color: var(--color-card-text);
+	box-shadow: var(--shadow-md);
+	
+	/* Make panel take full width of its grid cell */
+	width: 100% !important;
+	
+	/* Ensure content stays within bounds */
+	display: flex !important;
+	flex-direction: column !important;
+	justify-content: center !important;
+	align-items: stretch !important;
+}
+
+.team-panel .team-score {
+	margin-top: 0;
+	margin-bottom: var(--space-md);
+	/* Ensure score is full width */
+	width: 100%;
+}
+
+.team-panel .point-buttons {
+	width: 100%;
+	/* Flex buttons optimally */
+	flex-wrap: wrap;
+}
+
+/* ============================================================
+ * Tablet Layout (521px+)
+ * =========================================================== */
+
+@media (min-width: 521px) {
+	.scoreboard {
+		gap: 24px !important;
+		padding: 24px !important;
+	}
+	
+	.team-panel {
+		max-width: none !important;
+	}
+}
+
+/* Large desktop (960px+) */
+@media (min-width: 960px) {
+	.scoreboard {
+		gap: 32px !important;
+		padding: 32px !important;
+	}
+}
+
+/* ============================================================
+ * Landscape Orientation
+ * =========================================================== */
+
+@media (orientation: landscape) and (max-height: 500px) {
+	.scoreboard {
+		gap: 12px !important;
+		padding: 12px !important;
+	}
+
+	.team-panel {
+		padding: var(--space-sm);
+		border-radius: var(--radius-md);
+	}
+
+	.team-panel .team-score {
+		margin-bottom: var(--space-sm);
+	}
+
+	.team-panel .point-buttons {
+		gap: 6px !important;
+	}
+}

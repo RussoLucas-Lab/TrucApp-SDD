@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truco App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/e94528df12.js" crossorigin="anonymous"></script>
+</head>
+<body onload="rotateCard()">
+    <div class="popup-card">
+        <div class="card">
+            <div class="front">
+                <button class="close-btn" id="close-popup">Comenzar</button>
+            </div>
+            <div class="back"></div>
+        </div>
+    </div>
+    <div class="container-player-1">
+        <div class="container-points">
+            <div class="box-1"></div>
+            <div class="box-2"></div>
+            <div class="box-3"></div>   
+            <div class="box-4"></div>
+            <div class="box-5"></div>
+            <div class="box-6"></div>
+        </div>
+            <button class="btn" id="addP1"> sumar</button>
+            <button class="btn" id="removeP1">remover</button>
+    </div>
+    <div class="container-player-2">
+        <div class="container-points">
+            <div class="box-1"></div>
+            <div class="box-2"></div>
+            <div class="box-3"></div>   
+            <div class="box-4"></div>
+            <div class="box-5"></div>
+            <div class="box-6"></div>
+        </div>
+            <button class="btn" id="addP2"> sumar</button>
+            <button class="btn" id="removeP2">remover</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

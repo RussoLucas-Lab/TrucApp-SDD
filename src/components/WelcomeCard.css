@@ -1,0 +1,132 @@
+/* ============================================================
+ * WelcomeCard - Card Animation and Styling
+ * Traditional Truco card flip animation on page load
+ * =========================================================== */
+
+.popup-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.card {
+  position: relative;
+  width: 248px;
+  height: 400px;
+  perspective: 1000px;
+  transform: scale(0);
+  transition: transform 0.75s ease-out;
+}
+
+.card.show {
+  transform: scale(1);
+  
+}
+
+.card.closing {
+  transform: scale(0);
+}
+
+.card.closing .card-back {
+  transform: rotateY(0deg);
+}
+
+.card.closing .card-front {
+  transform: rotateY(180deg);
+}
+
+.card div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  transition: all 1s ease-in-out;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back {
+  background: url() no-repeat center;
+  background-size: 130%;
+  transform: rotateY(0deg);
+}
+
+.card-front {
+  background: url() no-repeat center;
+  background-size: contain;
+  transform: rotateY(180deg);
+}
+
+.card.flip .card-back {
+  transform: rotateY(180deg) scale(1);
+}
+
+.card.flip .card-front {
+  transform: rotateY(360deg) scale(1);
+}
+
+.popup-card.close,
+.card.close {
+  visibility: hidden;
+}
+
+/* ============================================================
+ * Close Button
+ * =========================================================== */
+
+.close-btn {
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border: 0;
+  height: 40px;
+  width: 120px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.close-btn:hover {
+  transform: translateX(-50%) translateY(-50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn:active {
+  transform: translateX(-50%) translateY(-50%) scale(0.95);
+}
+
+/* ============================================================
+ * Responsive - Mobile
+ * =========================================================== */
+
+@media (max-width: 480px) {
+  .card {
+    width: 200px;
+    height: 320px;
+  }
+
+  .close-btn {
+    width: 100px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+}
